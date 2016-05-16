@@ -1,11 +1,11 @@
 import React from 'react';
-import Poll from './Poll';
+import PollContainer from '../containers/PollContainer';
 import DashboardPanelContainer from '../containers/DashboardPanelContainer';
 
 const App = () => (
     <div className='container'>
         <DashboardPanelContainer title='Panel Title'>
-            <Poll />
+            <PollContainer />
         </DashboardPanelContainer>
     </div>
 );

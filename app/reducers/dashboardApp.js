@@ -28,6 +28,7 @@ function dashboardApp(state = initialState, action) {
             };
         case CLEAR_ALL_LOG_ENTRIES:
             return Object.assign({}, state, {
+                hasError: false,
                 logs: []
             });
         default:

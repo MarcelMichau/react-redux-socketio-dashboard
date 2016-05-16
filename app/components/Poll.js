@@ -2,27 +2,14 @@ import React from 'react';
 import LogLineContainer from '../containers/LogLineContainer';
 import moment from 'moment';
 const socket = io();
-const NUMBER_OF_LOG_ENTRIES = 10;
 
 export default class Poll extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            logLines: []
-        };
-
         socket.on('news', (data) => {
             if (typeof data === 'object') {
-                if (this.state.logLines.length < NUMBER_OF_LOG_ENTRIES) {
-                    this.setState({
-                        logLines: this.state.logLines.concat([data])
-                    });
-                } else {
-                    this.setState({
-                        logLines: this.state.logLines.slice(1, NUMBER_OF_LOG_ENTRIES).concat([data])
-                    });
-                }
+                this.props.addLogEntry(data);
             }
         });
     }
@@ -41,10 +28,6 @@ export default class Poll extends React.Component {
         };
         
         this.props.addLogEntry(data);
-        
-        // this.setState({
-        //     logLines: this.state.logLines.concat([data])
-        // });
     }
 
     addError() {
@@ -55,10 +38,6 @@ export default class Poll extends React.Component {
         };
         
         this.props.addLogEntry(data);
-        
-        // this.setState({
-        //     logLines: this.state.logLines.concat([data])
-        // });
     }
 
     render() {

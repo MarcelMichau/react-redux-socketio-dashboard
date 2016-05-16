@@ -6,13 +6,8 @@ const moment = require('moment');
 
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+app.use('/', express.static('public'));
 
 app.post('/log', (req, res) => {
   req.body.timeStamp = moment();

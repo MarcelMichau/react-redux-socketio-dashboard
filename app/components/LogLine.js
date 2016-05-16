@@ -1,15 +1,13 @@
 import React from 'react';
 
 class LogLine extends React.Component {
-    componentWillMount() {
-        if (this.props.level === 'Error')
+    render() {
+        let { timeStamp, level, detail } = this.props.line;
+        
+        if (level === 'Error')
             this.props.addErrorFlag();
         else
             this.props.removeErrorFlag();
-    }
-
-    render() {
-        let { timeStamp, level, detail } = this.props.line;
 
         let className = {
             'Info': 'text-info',

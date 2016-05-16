@@ -23,7 +23,7 @@ function dashboardApp(state = initialState, action) {
                 });
             } else {
                 return Object.assign({}, state, {
-                    logs: state.logs.slice(1, NUMBER_OF_LOG_ENTRIES).concat([data])
+                    logs: state.logs.slice(1, NUMBER_OF_LOG_ENTRIES).concat([action.data])
                 });
             }
         default:

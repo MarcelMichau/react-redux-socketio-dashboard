@@ -17,7 +17,7 @@ function dashboardApp(state = initialState, action) {
                 hasError: false
             });
         case ADD_LOG_ENTRY:
-            if (this.props.logLines.length < NUMBER_OF_LOG_ENTRIES) {
+            if (state.logs.length < NUMBER_OF_LOG_ENTRIES) {
                 return Object.assign({}, state, {
                     logs: state.logs.concat([action.data])
                 });

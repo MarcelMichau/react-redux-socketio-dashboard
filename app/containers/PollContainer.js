@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Poll from '../components/Poll';
-import { addLogEntry } from '../actions/actions';
+import { addLogEntry, addErrorFlag, removeErrorFlag } from '../actions/actions';
 
 const PollContainer = connect(
     function mapStateToProps (state) {
@@ -8,7 +8,9 @@ const PollContainer = connect(
     },
     function mapDispatchToProps (dispatch) {
         return {
-          addLogEntry: (log) => dispatch(addLogEntry(log)) 
+          addLogEntry: (log) => dispatch(addLogEntry(log)),
+          addErrorFlag: () => dispatch(addErrorFlag()),
+          removeErrorFlag: () => dispatch(removeErrorFlag())
         };
     }
 )(Poll);

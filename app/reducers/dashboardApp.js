@@ -1,4 +1,4 @@
-import { FLAG_ERROR, REMOVE_ERROR, ADD_LOG_ENTRY } from '../actions/actions';
+import { FLAG_ERROR, REMOVE_ERROR, ADD_LOG_ENTRY, CLEAR_ALL_LOG_ENTRIES } from '../actions/actions';
 const NUMBER_OF_LOG_ENTRIES = 10;
 
 const initialState = {
@@ -25,7 +25,11 @@ function dashboardApp(state = initialState, action) {
                 return Object.assign({}, state, {
                     logs: state.logs.slice(1, NUMBER_OF_LOG_ENTRIES).concat([action.data])
                 });
-            }
+            };
+        case CLEAR_ALL_LOG_ENTRIES:
+            return Object.assign({}, state, {
+                logs: []
+            });
         default:
             return state;
     }

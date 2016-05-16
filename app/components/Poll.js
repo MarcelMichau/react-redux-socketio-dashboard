@@ -13,9 +13,7 @@ export default class Poll extends React.Component {
     }
 
     clearLogs() {
-        this.setState({
-            logLines: []
-        });
+        this.props.clearLogEntries();
     }
 
     addInfo() {

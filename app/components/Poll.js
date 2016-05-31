@@ -10,6 +10,10 @@ export default class Poll extends React.Component {
         socket.on('news', (data) => {
              this.handleIncomingLogMessage(data);           
         });
+        
+        this.clearLogs = this.clearLogs.bind(this);
+        this.addInfo = this.addInfo.bind(this);
+        this.addError = this.addError.bind(this);
     }
 
     clearLogs() {
@@ -50,9 +54,9 @@ export default class Poll extends React.Component {
     render() {
         return (
             <div>
-                <button className='btn btn-primary' onClick={() => this.clearLogs() }>Clear</button>
-                <button className='btn btn-info' onClick={() => this.addInfo() }>Add Info</button>
-                <button className='btn btn-danger' onClick={() => this.addError() }>Add Error</button>
+                <button className='btn btn-primary' onClick={ this.clearLogs }>Clear</button>
+                <button className='btn btn-info' onClick={ this.addInfo }>Add Info</button>
+                <button className='btn btn-danger' onClick={ this.addError }>Add Error</button>
                 { this.props.logLines.map(line => <LogLine key={line.timeStamp} line={line} />) }
             </div>
         );
